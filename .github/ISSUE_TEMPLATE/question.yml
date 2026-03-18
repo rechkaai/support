@@ -1,0 +1,25 @@
+name: ❓ Question
+description: Ask a question about how something works
+labels: ["question"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Your question
+      placeholder: e.g. How do I configure call filtering by pipeline stage?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Any relevant details that help us answer
+    validations:
+      required: false
+  - type: input
+    id: account
+    attributes:
+      label: Company / Account
+      description: Optional — helps us check your configuration
+    validations:
+      required: false

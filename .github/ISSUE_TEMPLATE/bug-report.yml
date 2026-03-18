@@ -1,0 +1,65 @@
+name: 🐛 Bug Report
+description: Something isn't working as expected
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much detail as possible — it helps us resolve issues faster.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One sentence describing the issue
+      placeholder: e.g. Call analysis results are not appearing in the report
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What should happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What is happening instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Click on ...
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: account
+    attributes:
+      label: Company / Account
+      description: Your company name or account ID in the system (optional but helpful)
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical — system is unusable
+        - High — major feature broken
+        - Medium — feature partially broken
+        - Low — minor inconvenience
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Screenshots, logs, or any other relevant information
+    validations:
+      required: false

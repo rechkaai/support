@@ -1,0 +1,44 @@
+name: 💡 Feature Request
+description: Suggest an improvement or new feature
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We appreciate your ideas. Please describe what you'd like to see and why it matters.
+  - type: input
+    id: summary
+    attributes:
+      label: Feature summary
+      description: One sentence describing what you want
+      placeholder: e.g. Export call reports to Excel
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or need
+      description: What problem does this solve, or what need does it address?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How would you like this to work? (optional)
+    validations:
+      required: false
+  - type: input
+    id: account
+    attributes:
+      label: Company / Account
+      description: Optional — helps us prioritise
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Mockups, references, or any other context
+    validations:
+      required: false
