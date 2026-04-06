@@ -1,19 +1,21 @@
-name: 🐛 Bug Report
+name: "\U0001F41B Bug Report"
 description: Something isn't working as expected
-labels: ["bug", "triage"]
+labels: ["bug", "needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to report a bug. Please fill in as much detail as possible — it helps us resolve issues faster.
+        Please fill in as much detail as possible. **Console errors and IDs help us fix bugs 5x faster than screenshots.**
+
   - type: input
     id: summary
     attributes:
       label: Summary
       description: One sentence describing the issue
-      placeholder: e.g. Call analysis results are not appearing in the report
+      placeholder: "e.g. Call analysis results are not appearing in the report"
     validations:
       required: true
+
   - type: textarea
     id: expected
     attributes:
@@ -21,6 +23,7 @@ body:
       description: What should happen?
     validations:
       required: true
+
   - type: textarea
     id: actual
     attributes:
@@ -28,6 +31,7 @@ body:
       description: What is happening instead?
     validations:
       required: true
+
   - type: textarea
     id: steps
     attributes:
@@ -38,28 +42,89 @@ body:
         3. See error
     validations:
       required: true
+
+  - type: textarea
+    id: console_errors
+    attributes:
+      label: Console errors (F12 → Console)
+      description: |
+        Open browser DevTools (F12), go to Console tab, reproduce the bug, then COPY-PASTE the error text here.
+        **Text, not screenshots** — we need to search and parse errors programmatically.
+      placeholder: |
+        TypeError: Cannot read properties of undefined (reading 'map')
+            at IntegrationModal.tsx:142
+            at renderWithHooks (react-dom.development.js:16305)
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: network_errors
+    attributes:
+      label: Network errors (F12 → Network, filter "4xx 5xx")
+      description: |
+        If the bug involves data not loading, open Network tab, reproduce the bug, filter by status 4xx/5xx.
+        Copy the URL, status code, and response body.
+      placeholder: |
+        POST /api/v2/integrations 422
+        Response: {"detail": "account_id already exists"}
+      render: shell
+    validations:
+      required: false
+
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: Exact URL where the bug occurs
+      placeholder: "https://app.rechka.ai/reports/3467"
+    validations:
+      required: false
+
   - type: input
     id: account
     attributes:
-      label: Company / Account
-      description: Your company name or account ID in the system (optional but helpful)
+      label: Company / Account ID
+      description: Company name or account_id in the system
     validations:
       required: false
+
+  - type: input
+    id: entity_ids
+    attributes:
+      label: Report ID / Call ID / Task ID
+      description: Any relevant IDs from the URL or UI
+      placeholder: "report_id=3467, task_id=12345"
+    validations:
+      required: false
+
   - type: dropdown
     id: severity
     attributes:
       label: Severity
       options:
-        - Critical — system is unusable
-        - High — major feature broken
-        - Medium — feature partially broken
-        - Low — minor inconvenience
+        - "Critical \u2014 system is unusable"
+        - "High \u2014 major feature broken"
+        - "Medium \u2014 feature partially broken"
+        - "Low \u2014 minor inconvenience"
     validations:
       required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Production (app.rechka.ai)
+        - Stage (test.rechka.ai)
+        - Dev (dev.rechka.ai)
+    validations:
+      required: true
+
   - type: textarea
     id: context
     attributes:
       label: Additional context
-      description: Screenshots, logs, or any other relevant information
+      description: Server logs, screenshots (if console text is not possible), timing, frequency
     validations:
       required: false
